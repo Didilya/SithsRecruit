@@ -1,0 +1,61 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+
+        <h2> Name: {{recruter.nameRecrut}} </h2>
+        <h3>Age: {{recruter.recruteAge}}</h3>
+        <h3>Planet: {{recruter.planetRecrute.planetName}}</h3>
+        <h3>Email: {{recruter.planetRecruteEmail}}</h3>
+
+        <p>Right test answers:</p>
+        {% for questions in recrList %}
+
+        <div class="row">
+            <div class="col-md-3">
+                <a href="/quiz/{{recruter.id}}/vote/{{questions.id}}">
+                    {{questions.question}}
+                </a>
+            </div>
+            <div class="col-md-1">
+
+                {{questions.optionTruequestion}}
+
+            </div>
+        </div>
+        {% endfor %}
+
+           <p></p>
+        
+        <p>Wrong answered questiouns:</p>
+        {% for questions in wrongList %}
+
+        <div class="row">
+            <div class="col-md-3">
+                <a href="/quiz/{{recruter.id}}/vote/{{questions.id}}">
+                    {{questions.question}}
+                </a>
+            </div>
+      
+        </div>
+        {% endfor %}
+         {% if messages %}
+
+	{% for message in messages %}
+	{% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+	{% endfor %}
+
+{% endif %}
+       <h2> Accept {{recruter.nameRecrut}} as Shadow Hand </h2>
+        <button type="submit" class="btn btn-info">
+            recruit
+        </button>
+        <button type="submit" class="btn btn-info" formaction="/recruters/{{sith.id}}" >
+           back
+        </button>
+    </form>
+
+
+
+{% endblock %}

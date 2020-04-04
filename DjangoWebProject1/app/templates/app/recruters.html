@@ -1,0 +1,25 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    <h2>Recruits for {{sithS.nameSith}}</h2>
+    <h3>By the way you have {{count}} Shadow hand</h3>
+
+        {% for recruter in recrList %}
+           
+              <div class="row">
+                   <div class="col-md-3"> 
+                   <a href="/recruters/{{sithS.id}}/{{recruter.id}}">
+                {{recruter.nameRecrut}} 
+                </a>
+          </div>
+                  <div class="col-md-1">
+
+                      {{recruter.planetRecrute.planetName}}
+                  </div>
+        </div>
+        {% endfor %}
+
+
+
+    
+{% endblock %}

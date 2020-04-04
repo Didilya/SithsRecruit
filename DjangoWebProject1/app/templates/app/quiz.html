@@ -1,0 +1,29 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    <h2>Take a quiz to become a Shadow Hand</h2>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Name: {{recruter.nameRecrut}} </h3>
+            </div>
+                
+            <ul class="list-group">
+                {% for questions in quiz %}
+                <li class="list-group-item">
+                    <strong> {{questions.question}} </strong>
+                    <span class="pull-right">
+                        <a href="/quiz/{{recruter.id}}/vote/{{questions.id}} " class="btn btn-info btn-xs">answer</a> &nbsp;
+                      
+                    </span>
+                </li>
+                {% endfor %}
+                
+            </ul>
+
+        </div>
+    </div>
+</div>
+    
+{% endblock %}

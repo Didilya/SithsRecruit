@@ -1,0 +1,50 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Question # {{question.id}} for Name: {{recruter.nameRecrut}}</h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2> {{question.question }}</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr />
+             <form method="post">
+                 {% csrf_token %}
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="question" value="{{question.optionYes}}" required>
+                                        {{question.optionYes}}
+                                    </label> 
+  </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="question" value="{{question.optionNo}}" >
+                                       {{question.optionNo}}
+                                    </label>  </div>                
+                            </div>
+
+                            <hr />
+
+                            <button type="submit" class="btn btn-info">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

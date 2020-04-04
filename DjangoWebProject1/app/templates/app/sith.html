@@ -1,0 +1,39 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>Welcome, dark lord</h2>
+<h3>choose your way</h3>
+
+<form method="post"> {% csrf_token %}
+    
+<div class="field">
+    
+ 
+                    <div class="select">
+ 
+                  <select name="dropdown1">
+                  {% for sith in siths %}
+                      <option value="{{sith.nameSith}}">{{sith.nameSith }}</option>
+                      
+                  {% endfor %}   
+                  </select>
+
+                 </div>
+
+
+
+</div>
+    <p>
+ <span class="pull-right">
+    
+   <button type="submit" class="btn btn-info">
+                                Submit
+                            </button>  
+
+     </span>
+    </p>
+      
+ </form> 
+
+{% endblock %}
